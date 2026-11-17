@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#146c43">
+  <title>Dashboard | ClinicCare</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">+</span><span>ClinicCare</span></a>
+      <p class="side-label">WORKSPACE</p>
+      <nav class="side-nav"><a class="nav-link active" href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>\n<a class="nav-link " href="patients.html"><span class="nav-icon">♙</span>Patients</a>\n<a class="nav-link " href="appointments.html"><span class="nav-icon">▣</span>Appointments</a>\n<a class="nav-link " href="consultations.html"><span class="nav-icon">✚</span>Consultations</a>\n<a class="nav-link " href="pharmacy.html"><span class="nav-icon">▤</span>Pharmacy</a>\n<a class="nav-link " href="laboratory.html"><span class="nav-icon">⌕</span>Laboratory</a>\n<a class="nav-link " href="billing.html"><span class="nav-icon">＄</span>Billing & Payments</a>\n<a class="nav-link " href="staff.html"><span class="nav-icon">♧</span>Staff</a>\n<a class="nav-link " href="reports.html"><span class="nav-icon">▥</span>Reports</a>\n<a class="nav-link " href="settings.html"><span class="nav-icon">⚙</span>Settings</a></nav>
+      <div class="sidebar-bottom">
+        <div class="user-mini"><div class="avatar">AD</div><div><strong>Administrator</strong><small>Clinic account</small></div></div>
+        <a class="nav-link logout-link" href="index.html">↪ Sign out</a>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div><span class="eyebrow">CLINIC WORKSPACE</span><h2>Dashboard</h2></div>
+        <div class="topbar-right"><span class="status-pill"><i></i> System interface</span><div class="avatar">AD</div></div>
+      </header>
+      <section class="page-heading"><div><h1>Dashboard</h1><p>A clear overview of your clinic's daily activities.</p></div></section>
+      
+<section class="stats-grid">
+  <article class="stat-card"><span class="stat-label">Registered patients</span><strong>—</strong><small>Patient records</small></article>
+  <article class="stat-card"><span class="stat-label">Today's appointments</span><strong>—</strong><small>Scheduled visits</small></article>
+  <article class="stat-card"><span class="stat-label">Waiting patients</span><strong>—</strong><small>Awaiting attention</small></article>
+  <article class="stat-card"><span class="stat-label">Low-stock medicines</span><strong>—</strong><small>Inventory alerts</small></article>
+</section>
+<section class="content-grid">
+  <article class="panel panel-wide"><div class="panel-header"><div><h3>Clinic activity</h3><p class="muted">Recent activity will appear here.</p></div><span class="tag">Overview</span></div><div class="empty-state"><div class="empty-icon">▦</div><strong>No activity to display yet</strong><p>Once records are added, your clinic activity will be shown here.</p></div></article>
+  <article class="panel"><div class="panel-header"><div><h3>Quick actions</h3><p class="muted">Common clinic tasks</p></div></div><div class="quick-actions"><a href="patients.html" class="quick-action"><span>＋</span> Register patient</a><a href="appointments.html" class="quick-action"><span>▣</span> Book appointment</a><a href="consultations.html" class="quick-action"><span>✚</span> New consultation</a><a href="billing.html" class="quick-action"><span>＄</span> Create bill</a></div></article>
+</section>
+
+      <footer class="footer">ClinicCare · Small Clinic Management System</footer>
+    </main>
+  </div>
+</body>
+</html>

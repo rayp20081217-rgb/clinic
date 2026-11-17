@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#146c43">
+  <title>Settings | ClinicCare</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <a class="brand" href="dashboard.html"><span class="brand-mark">+</span><span>ClinicCare</span></a>
+      <p class="side-label">WORKSPACE</p>
+      <nav class="side-nav"><a class="nav-link " href="dashboard.html"><span class="nav-icon">▦</span>Dashboard</a>\n<a class="nav-link " href="patients.html"><span class="nav-icon">♙</span>Patients</a>\n<a class="nav-link " href="appointments.html"><span class="nav-icon">▣</span>Appointments</a>\n<a class="nav-link " href="consultations.html"><span class="nav-icon">✚</span>Consultations</a>\n<a class="nav-link " href="pharmacy.html"><span class="nav-icon">▤</span>Pharmacy</a>\n<a class="nav-link " href="laboratory.html"><span class="nav-icon">⌕</span>Laboratory</a>\n<a class="nav-link " href="billing.html"><span class="nav-icon">＄</span>Billing & Payments</a>\n<a class="nav-link " href="staff.html"><span class="nav-icon">♧</span>Staff</a>\n<a class="nav-link " href="reports.html"><span class="nav-icon">▥</span>Reports</a>\n<a class="nav-link active" href="settings.html"><span class="nav-icon">⚙</span>Settings</a></nav>
+      <div class="sidebar-bottom">
+        <div class="user-mini"><div class="avatar">AD</div><div><strong>Administrator</strong><small>Clinic account</small></div></div>
+        <a class="nav-link logout-link" href="index.html">↪ Sign out</a>
+      </div>
+    </aside>
+    <main class="main-area">
+      <header class="topbar">
+        <div><span class="eyebrow">CLINIC WORKSPACE</span><h2>Settings</h2></div>
+        <div class="topbar-right"><span class="status-pill"><i></i> System interface</span><div class="avatar">AD</div></div>
+      </header>
+      <section class="page-heading"><div><h1>Settings</h1><p>Configure basic clinic information and system preferences.</p></div></section>
+      <section class="panel form-panel"><div class="panel-header"><div><h3>Clinic profile</h3><p class="muted">These fields are a visual starter and are not saved yet.</p></div></div><form class="form-grid" action="#" method="get"><label>Clinic name<input type="text" placeholder="Enter clinic name"></label><label>Clinic phone<input type="tel" placeholder="+256 ..."></label><label class="full-field">Clinic address<textarea rows="3" placeholder="Enter clinic address"></textarea></label><label>Contact email<input type="email" placeholder="clinic@example.com"></label><label>Currency<select><option>UGX — Uganda Shilling</option><option>USD — US Dollar</option></select></label><div class="full-field"><button class="btn btn-primary" type="button">Save settings (not connected)</button></div></form></section>
+      <footer class="footer">ClinicCare · Small Clinic Management System</footer>
+    </main>
+  </div>
+</body>
+</html>
