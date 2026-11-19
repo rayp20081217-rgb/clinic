@@ -1,32 +1,412 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#146c43">
-  <title>Patients | ClinicCare</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="app-layout">
-    <aside class="sidebar">
-      <a class="brand" href="dashboard.html"><span class="brand-mark">+</span><span>ClinicCare</span></a>
-      <p class="side-label">WORKSPACE</p>
-      <nav class="side-nav"><a class="nav-link " href="dashboard.html"><span class="nav-icon"></span>Dashboard</a><a class="nav-link active" href="patients.html"><span class="nav-icon"></span>Patients</a><a class="nav-link " href="appointments.html"><span class="nav-icon"></span>Appointments</a><a class="nav-link " href="consultations.html"><span class="nav-icon"></span>Consultations</a><a class="nav-link " href="pharmacy.html"><span class="nav-icon"></span>Pharmacy</a><a class="nav-link " href="laboratory.html"><span class="nav-icon"></span>Laboratory</a><a class="nav-link " href="billing.html"><span class="nav-icon"></span>Billing & Payments</a><a class="nav-link " href="staff.html"><span class="nav-icon"></span>Staff</a><a class="nav-link " href="reports.html"><span class="nav-icon"></span>Reports</a><a class="nav-link " href="settings.html"><span class="nav-icon"></span>Settings</a></nav>
-      <div class="sidebar-bottom">
-        <div class="user-mini"><div class="avatar">AD</div><div><strong>Administrator</strong><small>Clinic account</small></div></div>
-        <a class="nav-link logout-link" href="index.html">↪ Sign out</a>
-      </div>
-    </aside>
-    <main class="main-area">
-      <header class="topbar">
-        <div><span class="eyebrow">CLINIC WORKSPACE</span><h2>Patients</h2></div>
-        <div class="topbar-right"><span class="status-pill"><i></i> System interface</span><div class="avatar">AD</div></div>
-      </header>
-      <section class="page-heading"><div><h1>Patients</h1><p>Register patients and maintain their demographic records.</p></div></section>
-      <section class="panel"><div class="panel-header"><div><h3>Patient register</h3><p class="muted">Records will load here when the database is connected.</p></div><button class="btn btn-primary" type="button">Add patient</button></div><div class="table-wrap"><table><thead><tr><th>Patient ID</th><th>Patient name</th><th>Age</th><th>Phone</th><th>Date registered</th><th>Action</th></tr></thead><tbody><tr><td colspan="6"><div class="empty-state compact"><div class="empty-icon">▤</div><strong>No patient records yet. Patient records will appear here after registration.</strong><p>This page is currently a front-end layout only.</p></div></td></tr></tbody></table></div></section>
-      <footer class="footer">ClinicCare · Small Clinic Management System</footer>
-    </main>
-  </div>
-</body>
-</html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#146c43"><title>Patients | ClinicCare</title>
+
+<meta name="description" content="Manage patient registration and medical demographic records in ClinicCare.">
+
+<link rel="stylesheet" href="style.css">
+<script src="patients.js" defer></script>
+
+</head><body><div class="app-layout"><!-- SIDEBAR -->
+<aside class="sidebar">
+
+    <a class="brand" href="dashboard.html">
+        <span class="brand-mark">+</span>
+        <span>ClinicCare</span>
+    </a>
+
+    <p class="side-label">WORKSPACE</p>
+
+    <nav class="side-nav">
+
+        <a class="nav-link" href="dashboard.html">
+            <span class="nav-icon">▦</span> Dashboard
+        </a>
+
+        <a class="nav-link active" href="patients.html">
+            <span class="nav-icon">♙</span> Patients
+        </a>
+
+        <a class="nav-link" href="appointments.html">
+            <span class="nav-icon">▣</span> Appointments
+        </a>
+
+        <a class="nav-link" href="consultations.html">
+            <span class="nav-icon">✚</span> Consultations
+        </a>
+
+        <a class="nav-link" href="pharmacy.html">
+            <span class="nav-icon">⚕</span> Pharmacy
+        </a>
+
+        <a class="nav-link" href="laboratory.html">
+            <span class="nav-icon">⚗</span> Laboratory
+        </a>
+
+        <a class="nav-link" href="billing.html">
+            <span class="nav-icon">▤</span> Billing & Payments
+        </a>
+
+        <a class="nav-link" href="staff.html">
+            <span class="nav-icon">♧</span> Staff
+        </a>
+
+        <a class="nav-link" href="reports.html">
+            <span class="nav-icon">▥</span> Reports
+        </a>
+
+        <a class="nav-link" href="settings.html">
+            <span class="nav-icon">⚙</span> Settings
+        </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="user-mini">
+            <div class="avatar">AD</div>
+
+            <div>
+                <strong>Administrator</strong>
+                <small>Clinic account</small>
+            </div>
+        </div>
+
+        <a class="nav-link logout-link" href="index.html">
+            ↪ Sign out
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN CONTENT -->
+<main class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+        <div>
+            <span class="eyebrow">CLINIC WORKSPACE</span>
+            <h2>Patients</h2>
+        </div>
+
+        <div class="topbar-right">
+
+            <span class="status-pill">
+                <i></i> System interface
+            </span>
+
+            <div class="avatar">AD</div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PAGE HEADING -->
+    <section class="page-heading">
+
+        <div>
+            <h1>Patient Management</h1>
+
+            <p>
+                Register, manage and access patient demographic records.
+            </p>
+        </div>
+
+        <button
+            class="btn btn-primary"
+            type="button"
+            id="openPatientForm">
+
+            + Register Patient
+
+        </button>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <span>Total Patients</span>
+            <h2 id="totalPatients">0</h2>
+            <small>Registered patients</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Male Patients</span>
+            <h2 id="malePatients">0</h2>
+            <small>Male registrations</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Female Patients</span>
+            <h2 id="femalePatients">0</h2>
+            <small>Female registrations</small>
+        </div>
+
+        <div class="stat-card">
+            <span>Today's Registrations</span>
+            <h2 id="todayPatients">0</h2>
+            <small>New registrations today</small>
+        </div>
+
+    </section>
+
+
+    <!-- PATIENT REGISTRATION FORM -->
+    <section class="panel" id="patientFormSection" hidden>
+
+        <div class="panel-header">
+
+            <div>
+                <h3 id="formTitle">Register New Patient</h3>
+                <p class="muted">
+                    Enter the patient's correct information below.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-secondary"
+                id="closePatientForm">
+                Close
+            </button>
+
+        </div>
+
+
+        <form id="patientForm">
+
+            <input type="hidden" id="patientRecordId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        required
+                        maxlength="60"
+                        placeholder="Enter first name">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        required
+                        maxlength="60"
+                        placeholder="Enter last name">
+                </div>
+
+                <div class="form-group">
+                    <label for="dateOfBirth">Date of Birth *</label>
+                    <input
+                        type="date"
+                        id="dateOfBirth"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender *</label>
+                    <select id="gender" required>
+                        <option value="">Select gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        required
+                        maxlength="20"
+                        placeholder="+256 7XX XXX XXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        maxlength="120"
+                        placeholder="patient@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Residential Address</label>
+                    <input
+                        type="text"
+                        id="address"
+                        maxlength="200"
+                        placeholder="Enter residential address">
+                </div>
+
+                <div class="form-group">
+                    <label for="emergencyContact">Emergency Contact</label>
+                    <input
+                        type="tel"
+                        id="emergencyContact"
+                        maxlength="20"
+                        placeholder="Emergency contact number">
+                </div>
+
+                <div class="form-group">
+                    <label for="bloodGroup">Blood Group</label>
+                    <select id="bloodGroup">
+                        <option value="">Unknown / Not recorded</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="registrationDate">Registration Date</label>
+                    <input
+                        type="date"
+                        id="registrationDate"
+                        required>
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+
+                <button
+                    type="reset"
+                    class="btn btn-secondary"
+                    id="resetPatientForm">
+                    Clear Form
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="savePatient">
+                    Save Patient
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- PATIENT REGISTER -->
+    <section class="panel">
+
+        <div class="panel-header">
+
+            <div>
+                <h3>Patient Register</h3>
+                <p class="muted">
+                    View and manage registered patients.
+                </p>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                type="button"
+                id="exportPatients">
+                Export CSV
+            </button>
+
+        </div>
+
+
+        <!-- SEARCH -->
+        <div class="filter-bar">
+
+            <input
+                type="search"
+                id="patientSearch"
+                placeholder="Search by patient ID, name or phone..."
+                aria-label="Search patients">
+
+            <select id="genderFilter" aria-label="Filter by gender">
+                <option value="">All Genders</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Patient ID</th>
+                        <th>Patient Name</th>
+                        <th>Age</th>
+                        <th>Gender</th>
+                        <th>Phone</th>
+                        <th>Date Registered</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="patientTableBody">
+
+                    <tr>
+                        <td colspan="7">
+
+                            <div class="empty-state compact">
+
+                                <div class="empty-icon">▤</div>
+
+                                <strong>No patient records yet.</strong>
+
+                                <p>
+                                    Register your first patient to get started.
+                                </p>
+
+                            </div>
+
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        ClinicCare · Small Clinic Management System
+    </footer>
+
+</main>
+
+</div></body>
+  </html>
