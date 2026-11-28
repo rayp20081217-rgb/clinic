@@ -1,93 +1,61 @@
 // ============================================
-// LOGIN SYSTEM - SUPABASE
+// CLINICCARE LOGIN SYSTEM
 // ============================================
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const supabase = window.clinicCareSupabase;
+    const loginForm = document.getElementById("loginForm");
 
     if (!supabase) {
-        console.error("Supabase is not configured.");
-        alert("Connection to Supabase failed.");
+        console.error("Supabase connection not found.");
         return;
     }
 
-    const loginForm = document.getElementById("loginForm");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const loginBtn = document.getElementById("loginBtn");
-    const errorMessage = document.getElementById("errorMessage");
-
-    // Redirect if already logged in
-    checkSession();
-
-    async function checkSession() {
-        const { data, error } = await supabase.auth.getSession();
-
-        if (error) {
-            console.error(error);
-            return;
-        }
-
-        if (data.session) {
-            window.location.href = "dashboard.html";
-        }
+    if (!loginForm) {
+        console.error("Login form not found.");
+        return;
     }
 
-    // Login
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const email = emailInput.value.trim();
-        const password = passwordInput.value;
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const button = loginForm.querySelector('button[type="submit"]');
 
-        if (!email || !password) {
-            showError("Please enter your email and password.");
-            return;
-        }
+        const originalText = button.textContent;
 
-        loginBtn.disabled = true;
-        loginBtn.textContent = "Signing in...";
-        hideError();
+        button.disabled = true;
+        button.textContent = "Signing in...";
 
         try {
             const { data, error } = await supabase.auth.signInWithPassword({
-                email: email,
-                password: password
+                email,
+                password
             });
 
-            if (error) {
-                showError(error.message);
-                return;
+            if (error) throw error;
+
+            // Verify the staff profile exists
+            const { data: staff, error: staffError } = await supabase
+                .from("staff")
+                .select("id, full_name, role")
+                .eq("id", data.user.id)
+                .single();
+
+            if (staffError || !staff) {
+                await supabase.auth.signOut();
+                throw new Error("Your account has no staff profile. Contact the clinic administrator.");
             }
 
-            if (data.user) {
-                window.location.href = "dashboard.html";
-            }
+            // Redirect after successful login
+            window.location.href = "dashboard.html";
 
-        } catch (err) {
-            console.error(err);
-            showError("Something went wrong. Please try again.");
+        } catch (error) {
+            alert(error.message || "Login failed.");
         } finally {
-            loginBtn.disabled = false;
-            loginBtn.textContent = "Login";
+            button.disabled = false;
+            button.textContent = originalText;
         }
     });
-
-    function showError(message) {
-        if (errorMessage) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = "block";
-        } else {
-            alert(message);
-        }
-    }
-
-    function hideError() {
-        if (errorMessage) {
-            errorMessage.textContent = "";
-            errorMessage.style.display = "none";
-        }
-    }
-
 });
