@@ -9,22 +9,53 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="auth-page">
+
   <main class="auth-card">
-    <a class="brand brand-centered" href="index.html"><span class="brand-mark">+</span><span>ClinicCare</span></a>
+    <a class="brand brand-centered" href="index.html">
+      <span class="brand-mark">+</span>
+      <span>ClinicCare</span>
+    </a>
+
     <p class="eyebrow">SMALL CLINIC MANAGEMENT SYSTEM</p>
     <h1>Welcome back</h1>
     <p class="muted">Sign in to access your clinic workspace.</p>
-    <form action="dashboard.html" method="get" class="form-stack">
-      <label>Email address<input type="email" name="email" placeholder="name@clinic.com" required></label>
-      <label>Password<input type="password" name="password" placeholder="Enter your password" required></label>
-      <button class="btn btn-primary btn-full" type="submit">Sign in</button>
-    </form>
-    <p class="form-note">Starter interface only. Secure Supabase authentication will be connected in the next phase.</p>
-  </main>
-</body>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-client.js"></script>
-<script src="auth-guard.js"></script
 
-<script src="Login.js"></script>
-</html>
+    <form id="loginForm" class="form-stack">
+      <label>
+        Email address
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="name@clinic.com"
+          required
+        >
+      </label>
+
+      <label>
+        Password
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+        >
+      </label>
+
+      <button class="btn btn-primary btn-full" type="submit">
+        Sign in
+      </button>
+    </form>
+
+    <p class="form-note" id="loginMessage">
+      Sign in securely to your ClinicCare account.
+    </p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="Login.js"></script>
+
+</body>
+  </html>
